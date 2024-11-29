@@ -1,0 +1,49 @@
+package main
+
+import "fmt"
+
+func findSecondSmallest(arr []int) int {
+	if len(arr) < 2 {
+		fmt.Println("Array must have at least two elements")
+		return -1
+	}
+
+	// Assume the first two elements are the smallest and second smallest
+	smallest, secondSmallest := arr[0], arr[0]
+
+	// Find the smallest element
+	for _, num := range arr {
+		if num < smallest {
+			smallest = num
+		}
+	}
+
+	// Find the second smallest element
+	secondSmallestFound := false
+	for _, num := range arr {
+		if num > smallest {
+			if !secondSmallestFound || num < secondSmallest {
+				secondSmallest = num
+				secondSmallestFound = true
+			}
+		}
+	}
+
+	// If second smallest isn't updated, it means all elements are the same
+	if !secondSmallestFound {
+		fmt.Println("No second smallest element (array may contain all identical elements)")
+		return -1
+	}
+
+	return secondSmallest
+}
+
+func main() {
+	arr := []int{12, 13, 1, 1, 10, 24}
+
+	// Call the function and print the result
+	secondSmallest := findSecondSmallest(arr)
+	if secondSmallest != -1 {
+		fmt.Printf("The second smallest element is: %d\n", secondSmallest)
+	}
+}
