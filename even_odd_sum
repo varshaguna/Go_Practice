@@ -1,0 +1,44 @@
+package main
+
+import "fmt"
+
+// Function to calculate the sum of even and odd elements in an array
+func sumEvenOdd(arr []int) (int, int) {
+    evenSum := 0 // To store the sum of even numbers
+    oddSum := 0  // To store the sum of odd numbers
+
+    // Loop through each element in the array
+    for _, num := range arr {
+        if num%2 == 0 {
+            evenSum += num // Add to even sum if the number is even
+        } else {
+            oddSum += num // Add to odd sum if the number is odd
+        }
+    }
+
+    return evenSum, oddSum // Return the sums
+}
+
+func main() {
+    var n int
+
+    // Ask the user for the size of the array
+    fmt.Print("Enter the size of the array: ")
+    fmt.Scan(&n)
+
+    // Create an array of size n
+    arr := make([]int, n)
+
+    // Get array elements from the user
+    fmt.Println("Enter the elements of the array:")
+    for i := 0; i < n; i++ {
+        fmt.Scan(&arr[i])
+    }
+
+    // Calculate the sums
+    evenSum, oddSum := sumEvenOdd(arr)
+
+    // Print the results
+    fmt.Printf("Sum of even numbers: %d\n", evenSum)
+    fmt.Printf("Sum of odd numbers: %d\n", oddSum)
+}
