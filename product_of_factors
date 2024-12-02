@@ -1,0 +1,26 @@
+package main
+
+import "fmt"
+
+func productOfFactors(n int) int {
+	product := 1
+	// Loop to find all factors of n
+	for i := 1; i <= n; i++ {
+		if n%i == 0 {
+			product *= i // Multiply factor with product
+		}
+	}
+	return product
+}
+
+func main() {
+	var num int
+
+	// Ask the user to input a number
+	fmt.Print("Enter a number: ")
+	fmt.Scan(&num)
+
+	// Calculate and print the product of factors
+	result := productOfFactors(num)
+	fmt.Printf("Product of factors of %d is: %d\n", num, result)
+}
